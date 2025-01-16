@@ -1,0 +1,11 @@
+/* Enable scroll and hide the scrollbar */
+.scrollable-sidebar {
+  overflow-y: auto;          /* Allow scrolling */
+  -ms-overflow-style: none;  /* Hide scrollbar for Internet Explorer */
+  scrollbar-width: none;     /* Hide scrollbar for Firefox */
+}
+
+/* For webkit browsers like Chrome, Safari */
+.scrollable-sidebar::-webkit-scrollbar {
+  display: none;  /* Hide the scrollbar */
+}
