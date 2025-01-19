@@ -15,7 +15,7 @@ const NavbarIcon: React.FC<NavbarIconInterface> = ({ icon, number, className, on
       onClick={onClick}
     >
       {/* Circular Div with Icon */}
-      <div className="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center">
+      <div className="w-10 h-10 bg-[#F1F1F9] rounded-full flex items-center justify-center">
         <Image src={icon} alt="icon" width={20} height={20} />
       </div>
 

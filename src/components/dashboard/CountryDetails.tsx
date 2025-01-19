@@ -13,7 +13,7 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({ countryCode, countryNam
         {/* pass the country code (ISO alpha-2) */}
         <Flag code={countryCode} style={{ width: 30, height: 30, marginRight: 10 }} alt={`${countryName}-flag`} />
         
-        <div className="flex flex-column gap-2">
+        <div className="flex flex-col justify-around">
             <h4 className="font-bold">{countryName}</h4>
             <p className="text-sm bg-grey">{countryPopulation}</p>
         </div>

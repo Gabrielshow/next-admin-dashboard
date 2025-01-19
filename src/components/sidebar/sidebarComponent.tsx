@@ -31,7 +31,7 @@ const SidebarComponent: React.FC<SidebarComponentProps> = ({
         }`}
         onClick={onClick}
       >
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-row items-center gap-2">
           {icon}
           {text}
         </div>
