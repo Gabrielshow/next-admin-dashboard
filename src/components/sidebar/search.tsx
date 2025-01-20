@@ -12,7 +12,7 @@ const Search: React.FC<SearchProps> = ({ icon, placeholder = 'Search for Anythin
       <input 
         placeholder={placeholder} 
         type='text' 
-        className="bg-[#232324] border-none outline-none flex-1"
+        className="bg-[#232324] border-none outline-none flex-1 w-[80px]"
       />
     </div>
   );
