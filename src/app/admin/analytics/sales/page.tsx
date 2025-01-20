@@ -33,7 +33,7 @@ const page = () => {
       </section>
 
       <section className="mt-2">
-        <div>
+        <div className="flex flex-row justify-between items-center">
           <h4 className="text-bold">Recent Sales</h4>
           <p className=""><span className="text-blue-400 cursor-pointer">1-10</span> of 255 </p>
         </div>

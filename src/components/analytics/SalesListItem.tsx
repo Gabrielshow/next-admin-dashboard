@@ -19,7 +19,7 @@ interface SalesListItemProps {
 
 const SalesUserGroup: React.FC<SalesUserGroupProps> = ({ username }) => {
   return (
-    <div>
+    <div className="flex justify-center items-center">
       <Image
         src="/help.png"
         width={20}
@@ -78,7 +78,9 @@ const SalesListItem: React.FC<SalesListItemProps> = ({
 
       <div>{details}</div>
 
-      <div className={`flex items-center space-x-2 ${bgColor} px-3 py-1`}>
+      <div>{amount}</div>
+
+      <div className={`flex items-center space-x-2 rounded-[4px] ${bgColor} px-3 py-1`}>
         {/* Circular div with thicker shade */}
         <div className={`rounded-full w-[10px] h-[10px] ${borderColor}`} />
         {/* Status text with the same color as the border */}
