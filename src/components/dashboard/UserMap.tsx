@@ -52,13 +52,13 @@ const UserMap: React.FC = () => {
         const geoJson = await response.json();
         setGeoJsonData(geoJson);
       } catch (err: any) {
-        setError(err.message); 
+        setError(err.message); // Set error message if fetch fails
         console.error("Error fetching GeoJSON data:", err);
       }
     };
 
     if (isClient) {
-      fetchGeoJson(); 
+      fetchGeoJson(); // Fetch data only if on the client
     }
   }, [isClient]);
 
@@ -89,8 +89,8 @@ const UserMap: React.FC = () => {
     return <div>Error: {error}</div>; // Display error message if there is an error
   }
 
-  if (!geoJsonData) {
-    return <div>Loading map...</div>; // Loading state while fetching data
+  if (!geoJsonData || !isClient) {
+    return <div>Loading map...</div>; // Loading state while fetching data or if not on client
   }
 
   return (
