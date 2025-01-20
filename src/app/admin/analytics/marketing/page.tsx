@@ -1,5 +1,5 @@
 import React from 'react';
-import UserMap from '@/components/dashboard/UserMap';
+// import UserMap from '@/components/dashboard/UserMap';
 import OverviewCountry from '@/components/dashboard/OverviewCountry';
 // import DashboardSeparator from '@/components/analytics/DashboardSeparator';
 import { tutorData, studentData } from '@/data/constant';
@@ -17,9 +17,9 @@ const page = () => {
           <button className="flex justify-center items-center bg-grey-700"> By Country </button>
         </div>
         <div className="flex flex-col md:flex-row lg:flex-row">
-          <div className="flex-1">
+          {/* <div className="flex-1">
           <UserMap/>
-          </div>
+          </div> */}
           {/* <DashboardSeparator className="my-4" height="4px" /> */}
           <div className="flex-1 flex flex-col md:flex-row lg:flex-row border-grey-300 border-l-2">
             <OverviewCountry role={"Students"} data={studentData} />

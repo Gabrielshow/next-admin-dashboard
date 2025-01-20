@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import OverviewWelcome from '@/components/dashboard/OverviewWelcome';
 import OverviewCard from '@/components/dashboard/OverviewCard';
 import OverviewCountry from '@/components/dashboard/OverviewCountry';
-import UserMap from '@/components/dashboard/UserMap'
+// import UserMap from '@/components/dashboard/UserMap'
 import { AiOutlineRise } from "react-icons/ai";
 
 export default function Admin() {
@@ -40,7 +40,7 @@ export default function Admin() {
         <OverviewCard role={"Courses"} number={"642"} change={23.40} bgColor="bg-[rgba(114,192,198,1)]" icon={<AiOutlineRise />}/>
       </section>
       <section className="flex flex-col md:flex-row justify-between mt-4">
-        <div className="flex-1"><UserMap/></div>
+        {/* <div className="flex-1"><UserMap/></div> */}
         <div className="flex-1 flex flex-col md:flex-row justify-between">
           <div className="flex-1 mr-2">
             <OverviewCountry role={"Tutors"} data={tutorData} />
