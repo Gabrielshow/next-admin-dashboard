@@ -25,11 +25,11 @@ const DetailsCard: React.FC<DetailsCardProps> = ({className}) => {
                 </div>
             </div>
             <div className="flex flex-row justify-between items-center">
-                <p className="nowrap-whitespace"> Student's name</p>
+                <p className="nowrap-whitespace"> Student&apos;s name</p>
                 <h4 className="text-bold nowrap-whitespace">Adenekan Akeem</h4>
             </div>
             <div className="flex flex-row justify-between items-center">
-                <p className="nowrap-whitespace"> Teacher's name</p>
+                <p className="nowrap-whitespace"> Teacher&apos;s name</p>
                 <h4 className="text-bold nowrap-whitespace">Bekwa Undie</h4>
             </div>
             <div className="flex flex-row justify-between items-center">

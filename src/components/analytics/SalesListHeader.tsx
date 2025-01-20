@@ -40,7 +40,7 @@ const SalesListHeader: React.FC<SalesListHeaderProps> = ({ id,
        {status}
       </div>
 
-      <div>''</div>
+      <div>&apos;&apos;</div>
     </div>
     </div>
 )
