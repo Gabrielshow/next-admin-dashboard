@@ -64,7 +64,7 @@ const SalesListItem: React.FC<SalesListItemProps> = ({
   const { bgColor, borderColor, textColor } = statusColors[status];
 
   return (
-    <div className={`flex flex-row justify-evenly items-center ${className}`}>
+    <div className={`flex flex-row justify-between items-center ${className}`}>
       <div className="flex flex-row items-center gap-2">
         <p>{id}</p>
         <SalesUserGroup username={username} />
