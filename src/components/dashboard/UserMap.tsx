@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import { scaleQuantile } from 'd3-scale';
+"use client";
+import React, { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import L from 'leaflet';
 
 // Sample user data: country codes and user percentage
 const userData = [
@@ -25,7 +26,7 @@ interface UserData {
   percentage: number;
 }
 
-interface GeographyData {
+interface Feature {
   properties: {
     ISO_A3: string; // ISO Alpha-3 country code
   };
@@ -33,39 +34,85 @@ interface GeographyData {
 
 const UserMap: React.FC = () => {
   const [data, setData] = useState<UserData[]>(userData);
+  const [geoJsonData, setGeoJsonData] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const colorScale = scaleQuantile<number>()
-    .domain(data.map((d) => d.percentage))
-    .range(['#f0f0f0', '#9e9e9e', '#7c4dff', '#4caf50', '#c62828']);
+  useEffect(() => {
+    const fetchGeoJson = async () => {
+      try {
+        const response = await fetch(geoUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const geoJson = await response.json();
+        setGeoJsonData(geoJson);
+      } catch (err: any) {
+        setError(err.message); // Set error message if fetch fails
+        console.error("Error fetching GeoJSON data:", err);
+      }
+    };
+
+    fetchGeoJson();
+  }, []);
+
+  const getFillColor = (percentage: number) => {
+    if (percentage <= 5) return '#f0f0f0';
+    if (percentage <= 10) return '#9e9e9e';
+    if (percentage <= 20) return '#7c4dff';
+    if (percentage <= 35) return '#4caf50';
+    return '#c62828';
+  };
+
+  const onEachCountry = (country: Feature, layer: L.GeoJSON) => { // Change L.Layer to L.GeoJSON
+    const countryData = data.find((item) => item.country === country.properties.ISO_A3);
+    const percentage = countryData ? countryData.percentage : 0;
+    const fillColor = getFillColor(percentage);
+    
+    layer.setStyle({
+      fillColor: fillColor,
+      weight: 0.5,
+      color: '#fff',
+      fillOpacity: 1,
+    });
+
+    layer.bindPopup(`<strong>${country.properties.ISO_A3}</strong>: ${percentage}%`);
+  };
+
+  if (error) {
+    return <div>Error: {error}</div>; 
+  }
+
+  if (!geoJsonData) {
+    return <div>Loading map...</div>;
+  }
 
   return (
     <div style={{ width: '100%', height: '500px' }}>
       <h2>User Distribution by Country</h2>
-      <ComposableMap projection="geoMercator" width={800} height={600}>
-        <Geographies geography={geoUrl}>
-          {({ geographies }: { geographies: GeographyData[] }) =>
-            geographies.map((geo: GeographyData) => {
-              const countryData = data.find(
-                (item) => item.country === geo.properties.ISO_A3
-              );
-              const percentage = countryData ? countryData.percentage : 0;
-              const fillColor = colorScale(percentage) as string;
+      <MapContainer center={[20, 0]} zoom={2} style={{ width: '100%', height: '100%' }}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <GeoJSON
+          data={geoJsonData}
+          style={(feature: any) => {
+            const countryData = data.find((item) => item.country === feature.properties.ISO_A3);
+            const percentage = countryData ? countryData.percentage : 0;
+            const fillColor = getFillColor(percentage);
 
-              return (
-                <Geography
-                  key={geo.properties.ISO_A3}
-                  geography={geo}
-                  fill={fillColor}
-                  stroke="#fff"
-                  strokeWidth={0.5}
-                />
-              );
-            })
-          }
-        </Geographies>
-      </ComposableMap>
+            return {
+              fillColor: fillColor,
+              weight: 0.5,
+              color: '#fff',
+              fillOpacity: 1,
+            };
+          }}
+          onEachFeature={onEachCountry}
+        />
+      </MapContainer>
       <div style={{ marginTop: '20px' }}>
-         <h3>Percentage Breakdown by Country:</h3>
+        <h3>Percentage Breakdown by Country:</h3>
         {data.map((country) => (
           <div key={country.country}>
             <span>{country.country}</span> - {country.percentage}%

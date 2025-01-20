@@ -20,7 +20,7 @@ const OverviewButton: React.FC<OverviewButtonProps> = ({icon, title}) => {
 
 const OverviewWelcome: React.FC<OverviewWelcomeProps> = ({username}) => {
   return (
-    <div className="flex flex-row justify-between w-full">
+    <div className="flex flex-row justify-between w-full bg-grey-300">
         <div>
             <p> Hi {username}👋, Welcome to your dashboard</p>
         </div>

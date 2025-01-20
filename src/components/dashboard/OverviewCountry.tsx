@@ -11,7 +11,7 @@ const OverviewCountry: React.FC<OverviewCountryProps> = ({ role, data }) => {
     <div className="flex flex-col w-[552px]">
       <div className="flex flex-row justify-between py-2 px-2">
         <h5 className="font-bold">{role}</h5>
-        <p className="cursor-pointer text-decoration-underline text-sm text-grey-400">See All</p>
+        <p className="cursor-pointer underline text-sm text-grey-400">See All</p>
       </div>
       <div className="py-2 px-2">
         {/* Map data here using CountryDetails */}
