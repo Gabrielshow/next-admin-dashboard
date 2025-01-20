@@ -18,6 +18,7 @@ import { FaUsers } from "react-icons/fa6";
 import { FaTag } from "react-icons/fa";
 import { CiGift } from "react-icons/ci";
 import { RiLogoutBoxLine } from "react-icons/ri";
+import { CiSearch } from "react-icons/ci";
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -49,7 +50,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
         <SidebarHeader isSidebarOpen={isSidebarOpen} setIsSidebarOpen={toggleSidebar} />
       </div>
       <div className="mb-4 px-4">
-        <Search />
+        <Search icon={<CiSearch />}/>
       </div>
 
       <div className="px-4">
