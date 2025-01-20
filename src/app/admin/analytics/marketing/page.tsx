@@ -11,15 +11,17 @@ const page = () => {
   return (
     <div>
       <p className="font-bold mb-4"> Marketing Analytics </p>
-      <section>
+      <section className="border border-grey-300">
         <div className="flex flex-row justify-between py-2 px-2 border border-grey-300">
           <p className="font-bold">User Location</p>
           <button className="flex justify-center items-center bg-grey-700"> By Country </button>
         </div>
-        <div>
+        <div className="flex flex-col md:flex-row lg:flex-row">
+          <div className="flex-1">
           <UserMap/>
+          </div>
           {/* <DashboardSeparator className="my-4" height="4px" /> */}
-          <div className="flex flex-col md:flex-row lg:flex-row border-grey-300 border-l-2">
+          <div className="flex-1 flex flex-col md:flex-row lg:flex-row border-grey-300 border-l-2">
             <OverviewCountry role={"Students"} data={studentData} />
             <OverviewCountry role={"Tutors"} data={tutorData} />
           </div>

@@ -10,15 +10,15 @@ interface MarketingCardProps {
 
 const MarketingCard: React.FC<MarketingCardProps> = ({number, title, icon, bgColor = 'bg-white',}) => {
   return (
-    <div className={`flex flex-col px-2 py-2 justify-around items-center ${bgColor} `} >
+    <div className={`flex flex-col px-4 py-4 justify-around rounded-[12px] ${bgColor} `} >
         <div>
         {/* vector as background, get original width and height from figma file */}
         <Image src="/Vector 8.png" alt="vector background" width={300} height={40} />
         </div>
-        <div className="flex flex-row justify-between gap-4 rounded-[12px]">
+        <div className="flex flex-row justify-between rounded-[12px] text-white">
             <div className="flex flex-col">
-                <h4>{number}</h4>
-                <p>{title} </p>
+                <h4 className="text-[20px]">{number}</h4>
+                <p className="">{title} </p>
             </div>
             <div className="flex justify-center items-center">
                 Icon{icon}
