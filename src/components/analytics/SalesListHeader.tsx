@@ -20,11 +20,10 @@ const SalesListHeader: React.FC<SalesListHeaderProps> = ({ id,
   status,
   className}) => {
   return (
-        <div className={`flex flex-row justify-between items-center w-full ${className}`}>
+        <div className={`flex flex-row justify-between items-center ${className}`}>
       <div className="flex flex-row items-center gap-3">
         <p className="text-bold">{id}</p>
-        <div className="text-bold">{username}
-      </div>
+        <div className="text-bold">{username}</div>
 
       <div className="text-bold">
         {recipient}

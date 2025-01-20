@@ -28,7 +28,7 @@ const SalesComponent = () => {
           details={item.details}
           amount={item.amount}
           status={item.status}
-          className={index % 2 === 1 ? 'bg-grey' : ''} // Add bg-grey for even indexed items
+          className={index % 2 === 1 ? 'bg-grey-300' : ''} // Add bg-grey for even indexed items
         />
       ))}
     </div>

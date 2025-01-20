@@ -65,12 +65,12 @@ const SalesListItem: React.FC<SalesListItemProps> = ({
 
   return (
     <div className={`flex flex-row justify-evenly items-center ${className}`}>
-      <div>
+      <div className="flex flex-row items-center gap-2">
         <p>{id}</p>
         <SalesUserGroup username={username} />
       </div>
 
-      <div>
+      <div className="flex justify-center items-center">
         <SalesUserGroup username={recipient} />
       </div>
 
