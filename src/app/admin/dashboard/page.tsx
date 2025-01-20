@@ -42,10 +42,10 @@ export default function Admin() {
       <section className="flex flex-col md:flex-row justify-between mt-4">
         {/* <div className="flex-1"><UserMap/></div> */}
         <div className="flex-1 flex flex-col md:flex-row justify-between">
-          <div className="flex-1 mr-2">
+          <div className="flex-1 mx-2">
             <OverviewCountry role={"Tutors"} data={tutorData} />
           </div>
-          <div className="flex-1 ml-2">
+          <div className="flex-1 mx-2">
             <OverviewCountry role={"Students"} data={studentData} />
           </div>
         </div>

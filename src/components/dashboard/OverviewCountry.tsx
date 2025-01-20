@@ -8,7 +8,7 @@ interface OverviewCountryProps {
 
 const OverviewCountry: React.FC<OverviewCountryProps> = ({ role, data }) => {
   return (
-    <div className="flex flex-col w-[552px]">
+    <div className="flex flex-col w-full md:w-[300px] lg:w-[400px] mx-auto"> {/* Use responsive width */}
       <div className="flex flex-row justify-between py-2 px-2">
         <h5 className="font-bold">{role}</h5>
         <p className="cursor-pointer underline text-sm text-grey-400">See All</p>
